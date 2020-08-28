@@ -15,10 +15,15 @@ const reducer = (state, action) => {
                 ...state,
                 loggedInUser: action.payload
             };
-        case "GET_USERS_REQUEST":
+        case "GET_POSTS_REQUEST":
             return {
                 ...state,
                 posts: action.payload
+            };
+        case "GET_USERS_REQUEST":
+            return {
+                ...state,
+                users: action.payload
             };
 
         default:

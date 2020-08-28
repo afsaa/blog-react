@@ -8,7 +8,7 @@ import {
     getUsersAxiosRequest,
     getPostsAxiosRequest
 } from "../api";
-import { loggedInRequest, getUsersRequest } from "../actions";
+import { loggedInRequest, getUsersRequest, getPostsRequest } from "../actions";
 
 type loggedInUser = {
     id: number;
@@ -26,7 +26,8 @@ function Home({
     posts,
     token,
     loggedInRequest,
-    getUsersRequest
+    getUsersRequest,
+    getPostsRequest
 }: {
     loggedInUser?: loggedInUser;
     users?: Array<any>;
@@ -34,6 +35,7 @@ function Home({
     token?: string;
     loggedInRequest: Function;
     getUsersRequest: Function;
+    getPostsRequest: Function;
 }) {
     useEffect(() => {
         if (token) {
@@ -51,7 +53,7 @@ function Home({
             // });
             getPostsAxiosRequest(token)
                 .then(result => {
-                    getUsersRequest(result.data);
+                    getPostsRequest(result.data);
                 })
                 .catch(err => {
                     console.log(err);
@@ -81,7 +83,8 @@ const mapStateToProps = (state: any) => {
 
 const mapDispatchToProps = {
     loggedInRequest,
-    getUsersRequest
+    getUsersRequest,
+    getPostsRequest
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);
