@@ -15,7 +15,7 @@ type loggedInUser = {
     name: string;
     email: string;
     phoneNumber: number;
-    userType: string;
+    user_type: string;
     createdAt: string;
     updatedAt: string;
 };
@@ -46,11 +46,13 @@ function Home({
                 .catch(err => {
                     console.log(err);
                 });
-            // getUsersAxiosRequest(token).then((result) => {
-            //     console.log(result.data);
-            // }).catch((err) => {
-            //     console.log(err);
-            // });
+            getUsersAxiosRequest(token)
+                .then(result => {
+                    getUsersRequest(result.data);
+                })
+                .catch(err => {
+                    console.log(err);
+                });
             getPostsAxiosRequest(token)
                 .then(result => {
                     getPostsRequest(result.data);
@@ -63,8 +65,8 @@ function Home({
     return (
         <>
             <AppBar />
-            {loggedInUser?.userType === "Administrador" ? (
-                <Users />
+            {loggedInUser?.user_type === "Administrador" ? (
+                <Users users={users} />
             ) : (
                 <Posts posts={posts} />
             )}
