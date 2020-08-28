@@ -9,6 +9,7 @@ import {
     getPostsAxiosRequest
 } from "../api";
 import { loggedInRequest, getUsersRequest, getPostsRequest } from "../actions";
+import Container from "@material-ui/core/Container";
 
 type loggedInUser = {
     id: number;
@@ -65,11 +66,13 @@ function Home({
     return (
         <>
             <AppBar />
-            {loggedInUser?.user_type === "Administrador" ? (
-                <Users users={users} />
-            ) : (
-                <Posts posts={posts} />
-            )}
+            <Container>
+                {loggedInUser?.user_type === "Administrador" ? (
+                    <Users users={users} />
+                ) : (
+                    <Posts posts={posts} />
+                )}
+            </Container>
         </>
     );
 }
