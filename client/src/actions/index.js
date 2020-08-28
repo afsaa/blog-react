@@ -3,7 +3,8 @@ import {
     REGISTER_REQUEST,
     LOGGED_IN_REQUEST,
     GET_USERS_REQUEST,
-    GET_POSTS_REQUEST
+    GET_POSTS_REQUEST,
+    LOGOUT_REQUEST
 } from "./actionTypes";
 
 export const loginRequest = payload => ({
@@ -29,4 +30,8 @@ export const getUsersRequest = payload => ({
 export const getPostsRequest = payload => ({
     type: GET_POSTS_REQUEST,
     payload
+});
+
+export const logoutRequest = () => ({
+    type: LOGOUT_REQUEST
 });

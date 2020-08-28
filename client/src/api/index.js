@@ -42,6 +42,19 @@ export const loggedInUserAxiosRequest = async token => {
     }
 };
 
+export const logoutAxiosRequest = async token => {
+    try {
+        const logoutAxiosResponse = await axios.get(`${BASE_URL}/logout`, {
+            params: {
+                token: token
+            }
+        });
+        return logoutAxiosResponse;
+    } catch (error) {
+        return error;
+    }
+};
+
 export const getUsersAxiosRequest = async token => {
     try {
         const getUsersAxiosResponse = await axios.get(`${BASE_URL}/users`, {
