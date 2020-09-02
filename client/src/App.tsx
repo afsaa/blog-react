@@ -1,28 +1,71 @@
-import React from "react";
+import React, { ReactComponentElement, ReactHTMLElement } from "react";
 import Home from "./containers/Home";
 import Register from "./containers/Register";
 import Login from "./containers/Login";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Redirect
+} from "react-router-dom";
+import { connect } from "react-redux";
 
-function App() {
-  return (
-    <div className="App">
-      <Router>
-        <Switch>
-          <Route exact path="/">
-            <Home />
-          </Route>
-          <Route path="/register">
-            <Register />
-          </Route>
-          <Route path="/login">
-            <Login />
-          </Route>
-          <Route path="*"></Route>
-        </Switch>
-      </Router>
-    </div>
-  );
+function PrivateRoute({
+    children,
+    token,
+    exact,
+    path
+}: {
+    children: any;
+    token?: string;
+    exact?: boolean;
+    path: string;
+}) {
+    return (
+        <Route
+            exact={exact}
+            path={path}
+            render={({ location }) =>
+                token ? (
+                    children
+                ) : (
+                    <Redirect
+                        to={{
+                            pathname: "/login",
+                            state: { from: location }
+                        }}
+                    />
+                )
+            }
+        />
+    );
 }
 
-export default App;
+function App({ token }: { token?: string }) {
+    return (
+        <div className="App">
+            <Router>
+                <Switch>
+                    <PrivateRoute token={token} exact path="/">
+                        <Home />
+                    </PrivateRoute>
+                    <Route path="/register">
+                        <Register />
+                    </Route>
+                    <Route path="/login">
+                        <Login />
+                    </Route>
+                    <Route path="*"></Route>
+                </Switch>
+            </Router>
+        </div>
+    );
+}
+
+const mapStateToProps = (state: any) => {
+    return {
+        token: state.token
+    };
+};
+
+export default connect(mapStateToProps, null)(App);
