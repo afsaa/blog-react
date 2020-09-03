@@ -2,12 +2,12 @@ import React from "react";
 import Home from "./containers/Home";
 import Register from "./containers/Register";
 import Login from "./containers/Login";
+import BlogPost from "./components/BlogPost";
 import {
     BrowserRouter as Router,
     Switch,
     Route,
-    Redirect,
-    useParams
+    Redirect
 } from "react-router-dom";
 import { connect } from "react-redux";
 
@@ -42,12 +42,7 @@ function PrivateRoute({
     );
 }
 
-function BlogPost() {
-    let { slug } = useParams();
-    return <div>Now showing post {slug}</div>;
-}
-
-function App({ token }: { token?: string }) {
+function App({ token, posts }: { token?: string; posts?: Array<any> }) {
     return (
         <div className="App">
             <Router>
@@ -62,7 +57,7 @@ function App({ token }: { token?: string }) {
                         <Login />
                     </Route>
                     <Route path="/blog/:slug">
-                        <BlogPost />
+                        <BlogPost posts={posts} />
                     </Route>
                     <Route path="*"></Route>
                 </Switch>
@@ -73,7 +68,8 @@ function App({ token }: { token?: string }) {
 
 const mapStateToProps = (state: any) => {
     return {
-        token: state.token
+        token: state.token,
+        posts: state.posts
     };
 };
 
