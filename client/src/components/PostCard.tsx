@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
@@ -42,16 +43,16 @@ export default function PostCard({ post }: { post?: Post }) {
                         color="textSecondary"
                         component="p"
                     >
-                        {post?.long_text}
+                        {post?.short_text}
                     </Typography>
                 </CardContent>
             </CardActionArea>
             <CardActions>
                 <Button size="small" color="primary">
-                    Share
+                    Like
                 </Button>
                 <Button size="small" color="primary">
-                    Learn More
+                    <Link to={`blog/${post?.slug}`}>Leer Más</Link>
                 </Button>
             </CardActions>
         </Card>

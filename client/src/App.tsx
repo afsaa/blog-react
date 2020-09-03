@@ -1,4 +1,4 @@
-import React, { ReactComponentElement, ReactHTMLElement } from "react";
+import React from "react";
 import Home from "./containers/Home";
 import Register from "./containers/Register";
 import Login from "./containers/Login";
@@ -6,7 +6,8 @@ import {
     BrowserRouter as Router,
     Switch,
     Route,
-    Redirect
+    Redirect,
+    useParams
 } from "react-router-dom";
 import { connect } from "react-redux";
 
@@ -41,6 +42,11 @@ function PrivateRoute({
     );
 }
 
+function BlogPost() {
+    let { slug } = useParams();
+    return <div>Now showing post {slug}</div>;
+}
+
 function App({ token }: { token?: string }) {
     return (
         <div className="App">
@@ -54,6 +60,9 @@ function App({ token }: { token?: string }) {
                     </Route>
                     <Route path="/login">
                         <Login />
+                    </Route>
+                    <Route path="/blog/:slug">
+                        <BlogPost />
                     </Route>
                     <Route path="*"></Route>
                 </Switch>
