@@ -14,14 +14,11 @@ const useStyles = makeStyles((theme: Theme) =>
     createStyles({
         root: {
             flexGrow: 1,
-            maxWidth: 752
-        },
-        demo: {
-            backgroundColor: theme.palette.background.paper
+            background: "transparent",
         },
         title: {
-            margin: theme.spacing(4, 0, 2)
-        }
+            margin: theme.spacing(4, 0, 2),
+        },
     })
 );
 
@@ -31,9 +28,9 @@ function Users({ users }: { users?: Array<any> }) {
     return (
         <>
             <h1>Usuarios</h1>
-            <div className={classes.demo}>
+            <div className={classes.root}>
                 <List dense={true}>
-                    {users?.map(user => {
+                    {users?.map((user) => {
                         return (
                             <ListItem key={user.id}>
                                 <ListItemAvatar>

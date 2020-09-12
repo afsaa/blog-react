@@ -10,7 +10,9 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 
 const useStyles = makeStyles({
-    root: {}
+    root: {
+        background: "linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%)",
+    },
 });
 
 type Post = {

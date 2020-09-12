@@ -1,5 +1,6 @@
 import React from "react";
 import Home from "./containers/Home";
+import AppBar from "./components/AppBar";
 import Register from "./containers/Register";
 import Login from "./containers/Login";
 import BlogPost from "./components/BlogPost";
@@ -7,7 +8,7 @@ import {
     BrowserRouter as Router,
     Switch,
     Route,
-    Redirect
+    Redirect,
 } from "react-router-dom";
 import { connect } from "react-redux";
 
@@ -15,7 +16,7 @@ function PrivateRoute({
     children,
     token,
     exact,
-    path
+    path,
 }: {
     children: any;
     token?: string;
@@ -33,7 +34,7 @@ function PrivateRoute({
                     <Redirect
                         to={{
                             pathname: "/login",
-                            state: { from: location }
+                            state: { from: location },
                         }}
                     />
                 )
@@ -45,6 +46,7 @@ function PrivateRoute({
 function App({ token, posts }: { token?: string; posts?: Array<any> }) {
     return (
         <div className="App">
+            <AppBar />
             <Router>
                 <Switch>
                     <PrivateRoute token={token} exact path="/">
@@ -69,7 +71,7 @@ function App({ token, posts }: { token?: string; posts?: Array<any> }) {
 const mapStateToProps = (state: any) => {
     return {
         token: state.token,
-        posts: state.posts
+        posts: state.posts,
     };
 };
 

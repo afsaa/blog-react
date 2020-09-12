@@ -1,12 +1,11 @@
 import React, { useEffect } from "react";
-import AppBar from "../components/AppBar";
 import Posts from "../components/Posts";
 import Users from "../components/Users";
 import { connect } from "react-redux";
 import {
     loggedInUserAxiosRequest,
     getUsersAxiosRequest,
-    getPostsAxiosRequest
+    getPostsAxiosRequest,
 } from "../api";
 import { loggedInRequest, getUsersRequest, getPostsRequest } from "../actions";
 import Container from "@material-ui/core/Container";
@@ -28,7 +27,7 @@ function Home({
     token,
     loggedInRequest,
     getUsersRequest,
-    getPostsRequest
+    getPostsRequest,
 }: {
     loggedInUser?: loggedInUser;
     users?: Array<any>;
@@ -41,24 +40,24 @@ function Home({
     useEffect(() => {
         if (token) {
             loggedInUserAxiosRequest(token)
-                .then(result => {
+                .then((result) => {
                     loggedInRequest(result.data.user);
                 })
-                .catch(err => {
+                .catch((err) => {
                     console.log(err);
                 });
             getUsersAxiosRequest(token)
-                .then(result => {
+                .then((result) => {
                     getUsersRequest(result.data);
                 })
-                .catch(err => {
+                .catch((err) => {
                     console.log(err);
                 });
             getPostsAxiosRequest(token)
-                .then(result => {
+                .then((result) => {
                     getPostsRequest(result.data);
                 })
-                .catch(err => {
+                .catch((err) => {
                     console.log(err);
                 });
         }
@@ -66,7 +65,6 @@ function Home({
 
     return (
         <>
-            <AppBar />
             <Container>
                 {loggedInUser?.user_type === "Administrador" ? (
                     <Users users={users} />
@@ -83,14 +81,14 @@ const mapStateToProps = (state: any) => {
         loggedInUser: state.loggedInUser,
         users: state.users,
         posts: state.posts,
-        token: state.token
+        token: state.token,
     };
 };
 
 const mapDispatchToProps = {
     loggedInRequest,
     getUsersRequest,
-    getPostsRequest
+    getPostsRequest,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

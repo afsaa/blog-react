@@ -9,7 +9,7 @@
 }
 
 .login__container {
-    border: 1px solid #000000;
+    border: 2px solid #000000;
     border-radius: 20px;
     padding: 25px;
 }
@@ -23,4 +23,12 @@ Form {
 
 .login__container--login-link {
     text-align: center;
+}
+
+@media (max-width: 600px) {
+    .login__container {
+        border: none;
+        border-radius: 0;
+        padding: 0;
+    }
 }
