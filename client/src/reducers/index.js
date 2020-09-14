@@ -30,7 +30,7 @@ const reducer = (state, action) => {
                 ...state,
                 users: [
                     ...state.users.filter((user) => {
-                        user.id !== action.payload.userId;
+                        return user.id !== action.payload;
                     }),
                 ],
             };
