@@ -24,3 +24,11 @@ Form {
 .register__container--login-link {
     text-align: center;
 }
+
+@media (max-width: 600px) {
+    .register__container {
+        border: none;
+        border-radius: 0;
+        padding: 0;
+    }
+}
