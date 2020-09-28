@@ -14,11 +14,16 @@ class PostController extends Controller
     {
         $this->user = JWTAuth::parseToken()->authenticate();
     }
+    // public function index()
+    // {
+    //     return $this->user
+    //         ->posts()
+    //         ->get(['title', 'slug', 'short_text', 'long_text', 'image_url'])
+    //         ->toArray();
+    // }
     public function index()
     {
-        return $this->user
-            ->posts()
-            ->get(['title', 'slug', 'short_text', 'long_text', 'image_url'])
+        return Post::all()
             ->toArray();
     }
     public function show($id)
