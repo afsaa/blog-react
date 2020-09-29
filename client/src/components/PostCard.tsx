@@ -34,7 +34,7 @@ export default function PostCard({ post }: { post?: Post }) {
                 <CardMedia
                     component="img"
                     alt="Whatever"
-                    height="150"
+                    height="200"
                     image={post?.image_url}
                     title={post?.title}
                 />
