@@ -20,7 +20,7 @@ const Login = (props: any) => {
     const [open, setOpen] = useState(false);
     let location = useLocation();
     let { from }: { from?: any } = location.state || {
-        from: { pathname: "/" }
+        from: { pathname: "/" },
     };
 
     const handleOpen = () => {
@@ -54,9 +54,9 @@ const Login = (props: any) => {
                 <Formik
                     initialValues={{
                         email: "",
-                        password: ""
+                        password: "",
                     }}
-                    validate={values => {
+                    validate={(values) => {
                         const errors: Partial<User> = {};
                         if (!values.email) {
                             errors.email = "Campo Requerido";
@@ -74,12 +74,12 @@ const Login = (props: any) => {
                     }}
                     onSubmit={(values, { setSubmitting }) => {
                         loginAxiosRequest(values)
-                            .then(result => {
+                            .then((result) => {
                                 setSubmitting(false);
                                 loginRequest(result.data.token);
                                 history.push("/");
                             })
-                            .catch(err => {
+                            .catch((err) => {
                                 setSubmitting(false);
                                 handleOpen();
                             });
@@ -149,12 +149,12 @@ const Login = (props: any) => {
 
 const mapStateToProps = (state: any) => {
     return {
-        token: state.token
+        token: state.token,
     };
 };
 
 const mapDispatchToProps = {
-    loginRequest
+    loginRequest,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);

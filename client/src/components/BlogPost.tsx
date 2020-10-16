@@ -4,7 +4,7 @@ import { Grid, Typography } from "@material-ui/core";
 import Post from "./Post";
 
 function BlogPost({ posts }: { posts?: Array<any> }) {
-    let { slug } = useParams();
+    let { slug }: { slug: string } = useParams();
     let selectedBlogPost = posts?.filter((post) => {
         return post.slug === slug;
     });

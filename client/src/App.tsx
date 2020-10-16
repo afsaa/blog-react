@@ -58,9 +58,9 @@ function App({ token, posts }: { token?: string; posts?: Array<any> }) {
                     <Route path="/login">
                         <Login />
                     </Route>
-                    <Route path="/blog/:slug">
+                    <PrivateRoute token={token} path="/blog/:slug">
                         <BlogPost posts={posts} />
-                    </Route>
+                    </PrivateRoute>
                     <Route path="*"></Route>
                 </Switch>
             </Router>
