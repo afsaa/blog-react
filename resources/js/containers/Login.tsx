@@ -5,16 +5,25 @@ import { loginRequest } from "../actions";
 import { Formik, Form, Field } from "formik";
 import { Button, LinearProgress, Link, Snackbar } from "@material-ui/core";
 import MuiAlert, { AlertProps } from "@material-ui/lab/Alert";
+import { makeStyles } from "@material-ui/core/styles";
 import { TextField } from "formik-material-ui";
 import { loginAxiosRequest } from "../api";
 
-// import "../assets/Login.css";
+const useStyles = makeStyles(theme => ({
+    root: {
+        "& .MuiTextField-root": {
+            margin: theme.spacing(2),
+            width: 200
+        }
+    }
+}));
 
 function Alert(props: AlertProps) {
     return <MuiAlert elevation={6} variant="filled" {...props} />;
 }
 
 const Login = (props: any) => {
+    const classes = useStyles();
     const { loginRequest, token } = props;
     const history = useHistory();
     const [open, setOpen] = useState(false);
@@ -54,9 +63,9 @@ const Login = (props: any) => {
                 <Formik
                     initialValues={{
                         email: "",
-                        password: "",
+                        password: ""
                     }}
-                    validate={(values) => {
+                    validate={values => {
                         const errors: Partial<User> = {};
                         if (!values.email) {
                             errors.email = "Campo Requerido";
@@ -74,24 +83,25 @@ const Login = (props: any) => {
                     }}
                     onSubmit={(values, { setSubmitting }) => {
                         loginAxiosRequest(values)
-                            .then((result) => {
+                            .then(result => {
                                 setSubmitting(false);
                                 loginRequest(result.data.token);
                                 history.push("/");
                             })
-                            .catch((err) => {
+                            .catch(err => {
                                 setSubmitting(false);
                                 handleOpen();
                             });
                     }}
                 >
                     {({ submitForm, isSubmitting }) => (
-                        <Form>
+                        <Form className={classes.root}>
                             <Field
                                 component={TextField}
                                 type="email"
                                 name="email"
                                 label="Correo"
+                                size="normal"
                             />
                             <br />
                             <Field
@@ -99,6 +109,7 @@ const Login = (props: any) => {
                                 type="password"
                                 name="password"
                                 label="Contraseña"
+                                size="normal"
                             />
                             {isSubmitting && <LinearProgress />}
                             <br />

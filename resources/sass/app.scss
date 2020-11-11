@@ -19,7 +19,6 @@ body {
     background-repeat: no-repeat;
     background-attachment: fixed;
 }
-
 // Login styles
 .login {
     width: 100%;
@@ -30,32 +29,28 @@ body {
     align-items: center;
     text-align: center;
 }
-
 .login__container {
-    border: 2px solid #000000;
-    border-radius: 20px;
-    padding: 25px;
+    font-size: 2rem;
+    border: none;
+    border-radius: 0;
+    padding: 0;
 }
-
 Form {
     display: flex;
     flex-flow: column nowrap;
     justify-content: space-evenly;
     align-items: center;
 }
-
 .login__container--login-link {
     text-align: center;
 }
-
 @media (min-width: 600px) {
     .login__container {
-        border: none;
-        border-radius: 0;
-        padding: 0;
+        border: 2px solid #000000;
+        border-radius: 20px;
+        padding: 25px;
     }
 }
-
 // Register styles
 .register {
     width: 100%;
@@ -66,28 +61,25 @@ Form {
     align-items: center;
     text-align: center;
 }
-
 .register__container {
-    border: 2px solid #000000;
-    border-radius: 20px;
-    padding: 25px;
+    font-size: 2rem;
+    border: none;
+    border-radius: 0;
+    padding: 0;
 }
-
 Form {
     display: flex;
     flex-flow: column nowrap;
     justify-content: space-evenly;
     align-items: center;
 }
-
 .register__container--login-link {
     text-align: center;
 }
-
 @media (min-width: 600px) {
     .register__container {
-        border: none;
-        border-radius: 0;
-        padding: 0;
+        border: 2px solid #000000;
+        border-radius: 20px;
+        padding: 25px;
     }
 }
