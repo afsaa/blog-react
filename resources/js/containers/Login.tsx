@@ -101,7 +101,7 @@ const Login = (props: any) => {
                                 type="email"
                                 name="email"
                                 label="Correo"
-                                size="normal"
+                                size="medium"
                             />
                             <br />
                             <Field
@@ -109,13 +109,14 @@ const Login = (props: any) => {
                                 type="password"
                                 name="password"
                                 label="Contraseña"
-                                size="normal"
+                                size="medium"
                             />
                             {isSubmitting && <LinearProgress />}
                             <br />
                             <Button
                                 variant="contained"
                                 color="primary"
+                                size="medium"
                                 disabled={isSubmitting}
                                 onClick={submitForm}
                             >
