@@ -39,11 +39,11 @@ export default function PostCard({ post }: { post?: Post }) {
                     title={post?.title}
                 />
                 <CardContent>
-                    <Typography gutterBottom variant="h5" component="h2">
+                    <Typography gutterBottom variant="h6" component="h2">
                         {post?.title}
                     </Typography>
                     <Typography
-                        variant="body2"
+                        variant="body1"
                         color="textSecondary"
                         component="p"
                     >
@@ -52,11 +52,11 @@ export default function PostCard({ post }: { post?: Post }) {
                 </CardContent>
             </CardActionArea>
             <CardActions>
-                <Button size="small" color="primary">
+                <Button size="medium" color="primary">
                     Like
                 </Button>
                 <Button
-                    size="small"
+                    size="medium"
                     color="primary"
                     component={RouterLink}
                     to={`blog/${post?.slug}`}

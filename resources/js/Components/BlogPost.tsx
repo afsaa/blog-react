@@ -11,7 +11,7 @@ function BlogPost({ posts }: { posts?: Array<any> }) {
 
     return (
         <>
-            <Grid container spacing={4}>
+            <Grid container>
                 <Grid item xs={12} md={12} lg={8} xl={8}>
                     {selectedBlogPost ? (
                         selectedBlogPost?.map((post, i) => (

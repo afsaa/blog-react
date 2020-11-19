@@ -10,16 +10,16 @@ function Post({ post }: { post?: any }) {
 
     return (
         <>
-            <Box my={4}>
-                <Container maxWidth="md">
-                    <Typography variant="h2" align="center" gutterBottom={true}>
+            <Box>
+                <Container>
+                    <Typography variant="h1" align="center" gutterBottom={true}>
                         {post?.title}
                     </Typography>
                     <Typography variant="subtitle1" gutterBottom={true}>
                         Creado: {creationDateSp} | Actualizado: {updatedDateSp}
                     </Typography>
                     <Typography
-                        variant="h6"
+                        variant="h5"
                         color="textPrimary"
                         align="justify"
                         gutterBottom={true}
@@ -30,7 +30,7 @@ function Post({ post }: { post?: any }) {
                         className="post__image"
                         component="img"
                         alt="Post Image"
-                        height="500px"
+                        height="auto"
                         image={post?.image_url}
                         title={post?.title}
                     />

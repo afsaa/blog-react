@@ -110,6 +110,7 @@ const Register = (props: any) => {
                               type="name"
                               name="name"
                               label="Nombre"
+                              size="medium"
                           />
                           <br />
                           <Field
@@ -118,6 +119,7 @@ const Register = (props: any) => {
                               name="email"
                               label="Correo"
                               placeholder="carlos@gmail.com"
+                              size="medium"
                           />
                           <br />
                           <Field
@@ -125,6 +127,7 @@ const Register = (props: any) => {
                               type="password"
                               name="password"
                               label="Contraseña"
+                              size="medium"
                           />
                           <br />
                           <Field
@@ -132,7 +135,8 @@ const Register = (props: any) => {
                               type="tel"
                               name="phone_number"
                               label="Teléfono Celular"
-                              placeholder="573208465577"
+                              size="medium"
+                              placeholder="3157895677"
                           />
                           <br />
                           <FormControl>
@@ -142,6 +146,7 @@ const Register = (props: any) => {
                               <Field
                                   component={Select}
                                   name="user_type"
+                                  size="medium"
                                   inputProps={{
                                       id: "user-type"
                                   }}
@@ -157,6 +162,7 @@ const Register = (props: any) => {
                           <Button
                               variant="contained"
                               color="primary"
+                              size="medium"
                               disabled={isSubmitting}
                               onClick={submitForm}
                           >
